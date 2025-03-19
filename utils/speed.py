@@ -322,6 +322,7 @@ def sort_urls_key(item: ChannelTestResult) -> float:
 
 def sort_urls(name, data, supply=config.open_supply, filter_speed=config.open_filter_speed, min_speed=config.min_speed,
               filter_resolution=config.open_filter_resolution, min_resolution=config.min_resolution_value,
+              filter_delay=config.open_filter_delay, max_delay=config.max_delay,
               logger=None) -> list[ChannelTestResult]:
     """
     Sort the urls with info
@@ -358,7 +359,8 @@ def sort_urls(name, data, supply=config.open_supply, filter_speed=config.open_fi
                 except Exception as e:
                     print(e)
                 if avg_delay < 0 or (not supply and ((filter_speed and avg_speed < min_speed) or (
-                        filter_resolution and get_resolution_value(resolution) < min_resolution))):
+                        filter_resolution and get_resolution_value(resolution) < min_resolution) or (
+                        filter_delay and avg_delay > max_delay))):
                     continue
                 result["delay"] = avg_delay
                 result["speed"] = avg_speed

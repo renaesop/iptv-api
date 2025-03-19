@@ -4,6 +4,8 @@
 | open_empty_category    | 开启无结果频道分类，自动归类至底部                                                                                                                                                     | False             |
 | open_filter_resolution | 开启分辨率过滤，低于最小分辨率（min_resolution）的接口将会被过滤，GUI用户需要手动安装FFmpeg，程序会自动调用FFmpeg获取接口分辨率，推荐开启，虽然会增加测速阶段耗时，但能更有效地区分是否可播放的接口                                                      | True              |
 | open_filter_speed      | 开启速率过滤，低于最小速率（min_speed）的接口将会被过滤                                                                                                                                      | True              |
+| open_filter_delay      | 开启延迟过滤，延迟大于最大延迟（max_delay）的接口将会被过滤                                                                                                                                      | False             |
+| max_delay              | 最大延迟（单位毫秒），需要开启 open_filter_delay 才能生效                                                                                                                                      | 1000              |
 | open_hotel             | 开启酒店源功能，关闭后所有酒店源工作模式都将关闭                                                                                                                                              | False             |
 | open_hotel_foodie      | 开启 Foodie 酒店源工作模式                                                                                                                                                     | True              |
 | open_hotel_fofa        | 开启 FOFA、ZoomEye 酒店源工作模式                                                                                                                                               | False             |
