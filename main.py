@@ -19,6 +19,7 @@ from utils.channel import (
     process_sort_channel_list,
     write_channel_to_file,
     get_channel_data_cache_with_compare,
+    merge_channel_sources,  # Add this import
 )
 from utils.config import config
 from utils.tools import (
@@ -161,6 +162,7 @@ class UpdateSource:
                     ipv6=ipv6_support,
                     first_channel_name=channel_names[0],
                     callback=lambda: self.pbar_update(name="写入结果", item_name="文件"),
+                    merge_sources=True  # Add this argument
                 )
                 self.pbar.close()
                 if config.open_history:

@@ -923,3 +923,15 @@ def get_channel_data_cache_with_compare(data, new_data):
                             "ipv_type": info["ipv_type"]
                         })
                 data[cate][name] = updated_data
+
+
+def merge_channel_sources(channel_data):
+    """
+    Merge different sources of the same channel into a single line using # as a delimiter
+    """
+    merged_data = defaultdict(lambda: defaultdict(list))
+    for category, channels in channel_data.items():
+        for channel_name, sources in channels.items():
+            merged_sources = "#".join([source["url"] for source in sources])
+            merged_data[category][channel_name] = [{"url": merged_sources}]
+    return merged_data
