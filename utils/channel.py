@@ -700,11 +700,14 @@ async def process_sort_channel_list(data, ipv6=False, callback=None):
     open_supply = config.open_supply
     open_filter_speed = config.open_filter_speed
     min_speed = config.min_speed
+    open_filter_delay = config.open_filter_delay
+    max_delay = config.max_delay
     for cate, obj in data.items():
         for name, info_list in obj.items():
             info_list = sort_urls(name, info_list, supply=open_supply, filter_speed=open_filter_speed,
                                   min_speed=min_speed, filter_resolution=open_filter_resolution,
-                                  min_resolution=min_resolution_value, logger=logger)
+                                  min_resolution=min_resolution_value, filter_delay=open_filter_delay,
+                                  max_delay=max_delay, logger=logger)
             append_data_to_info_data(
                 result,
                 cate,
